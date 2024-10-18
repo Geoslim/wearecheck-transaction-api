@@ -12,6 +12,11 @@ use Throwable;
 
 class AuthService
 {
+    public function __construct(public WalletService $walletService)
+    {
+        //
+    }
+
     /**
      * @param array $data
      * @return array
@@ -22,6 +27,9 @@ class AuthService
         DB::beginTransaction();
 
         $user = User::create($data);
+
+        // create default wallet
+        $this->walletService->createWallet($user);
 
         $response['token'] = $user->createToken($user->email)->plainTextToken;
         $response['user'] = UserResource::make($user);

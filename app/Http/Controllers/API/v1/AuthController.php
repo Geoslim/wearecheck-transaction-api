@@ -19,7 +19,7 @@ class AuthController extends Controller
 {
     use JsonResponseTrait;
 
-    public function __construct(protected AuthService $authService)
+    public function __construct(public AuthService $authService)
     {
     }
 
