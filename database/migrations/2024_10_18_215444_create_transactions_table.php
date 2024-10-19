@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\Status;
 use App\Models\User;
 use App\Models\Wallet;
 use Illuminate\Database\Migrations\Migration;
@@ -20,7 +21,7 @@ return new class extends Migration
             $table->decimal('amount');
             $table->string('reference');
             $table->string('type');
-            $table->string('status')->default('pending');
+            $table->string('status')->default(Status::PENDING->value);
             $table->softDeletes();
             $table->timestamps();
         });
