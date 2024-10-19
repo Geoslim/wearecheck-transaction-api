@@ -18,7 +18,18 @@ class CreateTransactionRequest extends FormRequest
     {
         return [
             'type' => ['required', Rule::in(TransactionType::cases())],
-            'amount' => ['required', 'numeric']
+            'amount' => ['required', 'numeric'],
+            'reference' => [
+                Rule::requiredIf(function () {return $this->{'type'} == TransactionType::CREDIT->value;}),
+                'string'
+            ]
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'reference.required' => 'The reference is required for a credit transaction type.'
         ];
     }
 }

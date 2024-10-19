@@ -19,9 +19,9 @@ return new class extends Migration
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(Wallet::class)->constrained()->cascadeOnDelete();
             $table->decimal('amount');
-            $table->string('reference');
+            $table->string('reference')->unique();
             $table->string('type');
-            $table->string('status')->default(Status::PENDING->value);
+            $table->string('status');
             $table->softDeletes();
             $table->timestamps();
         });
