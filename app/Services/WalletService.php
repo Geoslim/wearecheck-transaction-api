@@ -11,8 +11,9 @@ class WalletService
 {
     /**
      * @param User $user
+     * @return Model
      */
-    public function createWallet(User $user)
+    public function createWallet(User $user): Model
     {
         return $user->wallet()->create();
     }
