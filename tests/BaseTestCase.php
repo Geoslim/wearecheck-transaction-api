@@ -3,7 +3,6 @@
 namespace Tests;
 
 use App\Models\User;
-use App\Models\Wallet;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class BaseTestCase extends TestCase

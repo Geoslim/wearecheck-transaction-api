@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 */
 
-Route::prefix('wallets')
+Route::prefix('wallet')
     ->middleware('auth:sanctum')
     ->controller(WalletController::class)
     ->group(function () {

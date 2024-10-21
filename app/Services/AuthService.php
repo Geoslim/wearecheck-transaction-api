@@ -46,7 +46,7 @@ class AuthService
      */
     public function login(array $data): array
     {
-        $user = User::whereEmail($data['user_name'])->first();
+        $user = User::whereEmail($data['email'])->first();
 
         if (!$user || !Hash::check($data['password'], $user->password)) {
             throw new AuthException('Access denied, please check your credentials');
